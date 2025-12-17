@@ -1,1 +1,2 @@
 # Bonie
+This project is a locally developed two-player shooting game based on Unity, where players take on the role of United Nations peacekeeping force members, carrying out humanitarian relief and combat missions against the backdrop of the South Sudan civil war. The project aims to enhance players' understanding of global conflicts and peacekeeping operations through interactive experiences, emphasising cooperation and tactical strategy.

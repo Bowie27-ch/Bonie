@@ -1,14 +1,4 @@
-# Bonito's research project
-Machine Learning-Driven Aerodynamic Optimization in Outward Tilted Hexa-rotors(not yet been published)
+# Bonie
+For the high-dimensional aerodynamic design space of the 'outward-flipping six-rotor', a surrogate model of Ω-i-β→thrust/power is first built using CFD samples, then the optimal ML predictor is selected using Bayesian tuning and multi-output regression, and finally embedded genetic algorithms are used for constrained optimisation to obtain the configuration that maximises the aerodynamic quality factor FM.
 
-Multimodal Medical Robot for Ovarian Tumor Diagnosis based on O-RADS classification
-
-Optimization of Transformer-based Neural Machine Translation Model
-
-Leaf Classification Task Based on the Vision Transformer (ViT) Model
-
-Multi-Agent Swarm Control Technology Experiment
-
-Unity-based VR/AR Game Development: Peace Mission-Crisis Frontline (Third-person shooter game)
-
-Computer Graphics: 3D Modeling and Rendering of the Library at SYSU Shenzhen Campus  
+The project has not been finished and will continue to be explored.

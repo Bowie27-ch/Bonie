@@ -6,19 +6,19 @@ M.S. Software Engineering student at Carnegie Mellon University Silicon Valley w
 
 ## Featured Projects
 
-### [Vision-Guided Pick-and-Place with Franka Panda](projects/robotics/franka-vision-pick-place)
+### [Vision-Guided Pick-and-Place with Franka Panda](https://github.com/Bowie27-ch/Bonie/tree/main/projects/robotics/franka-vision-pick-place)
 
 `ROS 2` `Python` `OpenCV` `TF2` `MoveIt 2` `Gazebo` `ros2_control`
 
 An autonomous perception-planning-control pipeline for a Franka Panda arm with an Allegro Hand. The system detects colored objects, transforms camera observations into robot coordinates, plans collision-aware motion, executes pick-and-place tasks, and logs trajectories and endpoint error. The repository includes a representative experiment and visualization.
 
-### [Transformer Chinese-to-English Translation](projects/nlp/transformer-zh-en-translation)
+### [Transformer Chinese-to-English Translation](https://github.com/Bowie27-ch/Bonie/tree/main/projects/nlp/transformer-zh-en-translation)
 
 `TensorFlow` `NLP` `Transformer` `Multi-Head Attention` `Python`
 
 A from-scratch encoder-decoder Transformer with Chinese preprocessing, positional encoding, masking, multi-head attention, learning-rate scheduling, checkpointing, inference, and attention visualization. Large checkpoints and the parallel corpus are intentionally excluded.
 
-### [WeChat Team Builder Mini Program](projects/wechat/wechat-team-builder)
+### [WeChat Team Builder Mini Program](https://github.com/Bowie27-ch/Bonie/tree/main/projects/wechat/wechat-team-builder)
 
 `JavaScript` `WeChat Mini Program` `CloudBase` `Serverless` `Document Database`
 

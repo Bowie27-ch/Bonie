@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="panda">
+    <group name="arm">
+        <chain base_link="panda_link0" tip_link="panda_link7"/>
+    </group>
+    <group name="gripper">
+        <link name="allegro_palm_link"/>
+        <joint name="allegro_thumb_rotatory_joint"/>
+        <joint name="allegro_thumb_flexor_1_joint"/>
+        <joint name="allegro_thumb_flexor_2_joint"/>
+        <joint name="allegro_thumb_flexor_3_joint"/>
+        <joint name="allegro_finger_1_rotatory_joint"/>
+        <joint name="allegro_finger_1_flexor_1_joint"/>
+        <joint name="allegro_finger_1_flexor_2_joint"/>
+        <joint name="allegro_finger_1_flexor_3_joint"/>
+        <joint name="allegro_finger_2_rotatory_joint"/>
+        <joint name="allegro_finger_2_flexor_1_joint"/>
+        <joint name="allegro_finger_2_flexor_2_joint"/>
+        <joint name="allegro_finger_2_flexor_3_joint"/>
+        <joint name="allegro_finger_3_rotatory_joint"/>
+        <joint name="allegro_finger_3_flexor_1_joint"/>
+        <joint name="allegro_finger_3_flexor_2_joint"/>
+        <joint name="allegro_finger_3_flexor_3_joint"/>
+    </group>
+    <group_state name="home" group="arm">
+        <joint name="panda_joint1" value="0"/>
+        <joint name="panda_joint2" value="0"/>
+        <joint name="panda_joint3" value="0"/>
+        <joint name="panda_joint4" value="-1.5708"/>
+        <joint name="panda_joint5" value="0"/>
+        <joint name="panda_joint6" value="1.6071"/>
+        <joint name="panda_joint7" value="0.8804"/>
+    </group_state>
+    <group_state name="open" group="gripper">
+        <joint name="allegro_thumb_rotatory_joint" value="0.463"/>
+        <joint name="allegro_thumb_flexor_1_joint" value="0.0"/>
+        <joint name="allegro_thumb_flexor_2_joint" value="0.0"/>
+        <joint name="allegro_thumb_flexor_3_joint" value="0.0"/>
+        <joint name="allegro_finger_1_rotatory_joint" value="0.0"/>
+        <joint name="allegro_finger_1_flexor_1_joint" value="0.0"/>
+        <joint name="allegro_finger_1_flexor_2_joint" value="0.0"/>
+        <joint name="allegro_finger_1_flexor_3_joint" value="0.0"/>
+        <joint name="allegro_finger_2_rotatory_joint" value="0.0"/>
+        <joint name="allegro_finger_2_flexor_1_joint" value="0.0"/>
+        <joint name="allegro_finger_2_flexor_2_joint" value="0.0"/>
+        <joint name="allegro_finger_2_flexor_3_joint" value="0.0"/>
+        <joint name="allegro_finger_3_rotatory_joint" value="0.0"/>
+        <joint name="allegro_finger_3_flexor_1_joint" value="0.0"/>
+        <joint name="allegro_finger_3_flexor_2_joint" value="0.0"/>
+        <joint name="allegro_finger_3_flexor_3_joint" value="0.0"/>
+    </group_state>
+    <group_state name="close" group="gripper">
+        <joint name="allegro_thumb_rotatory_joint" value="1.0"/>
+        <joint name="allegro_thumb_flexor_1_joint" value="0.8"/>
+        <joint name="allegro_thumb_flexor_2_joint" value="1.0"/>
+        <joint name="allegro_thumb_flexor_3_joint" value="1.0"/>
+        <joint name="allegro_finger_1_rotatory_joint" value="0.0"/>
+        <joint name="allegro_finger_1_flexor_1_joint" value="1.0"/>
+        <joint name="allegro_finger_1_flexor_2_joint" value="1.0"/>
+        <joint name="allegro_finger_1_flexor_3_joint" value="1.0"/>
+        <joint name="allegro_finger_2_rotatory_joint" value="0.0"/>
+        <joint name="allegro_finger_2_flexor_1_joint" value="1.0"/>
+        <joint name="allegro_finger_2_flexor_2_joint" value="1.0"/>
+        <joint name="allegro_finger_2_flexor_3_joint" value="1.0"/>
+        <joint name="allegro_finger_3_rotatory_joint" value="0.0"/>
+        <joint name="allegro_finger_3_flexor_1_joint" value="1.0"/>
+        <joint name="allegro_finger_3_flexor_2_joint" value="1.0"/>
+        <joint name="allegro_finger_3_flexor_3_joint" value="1.0"/>
+    </group_state>
+    <virtual_joint name="virtual_joint" type="fixed" parent_frame="world" child_link="panda_link0"/>
+
+    <!-- Panda arm self-collisions -->
+    <disable_collisions link1="panda_link0" link2="panda_link1" reason="Adjacent"/>
+    <disable_collisions link1="panda_link0" link2="panda_link2" reason="Never"/>
+    <disable_collisions link1="panda_link0" link2="panda_link3" reason="Never"/>
+    <disable_collisions link1="panda_link0" link2="panda_link4" reason="Never"/>
+    <disable_collisions link1="panda_link1" link2="panda_link2" reason="Adjacent"/>
+    <disable_collisions link1="panda_link1" link2="panda_link3" reason="Never"/>
+    <disable_collisions link1="panda_link1" link2="panda_link4" reason="Never"/>
+    <disable_collisions link1="panda_link2" link2="panda_link3" reason="Adjacent"/>
+    <disable_collisions link1="panda_link2" link2="panda_link4" reason="Never"/>
+    <disable_collisions link1="panda_link3" link2="panda_link4" reason="Adjacent"/>
+    <disable_collisions link1="panda_link3" link2="panda_link5" reason="Never"/>
+    <disable_collisions link1="panda_link3" link2="panda_link6" reason="Never"/>
+    <disable_collisions link1="panda_link3" link2="panda_link7" reason="Never"/>
+    <disable_collisions link1="panda_link4" link2="panda_link5" reason="Adjacent"/>
+    <disable_collisions link1="panda_link4" link2="panda_link6" reason="Never"/>
+    <disable_collisions link1="panda_link4" link2="panda_link7" reason="Never"/>
+    <disable_collisions link1="panda_link5" link2="panda_link6" reason="Adjacent"/>
+    <disable_collisions link1="panda_link5" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="panda_link6" link2="panda_link7" reason="Adjacent"/>
+
+    <!-- ALL Allegro ↔ Panda + Allegro ↔ Allegro (407 pairs, brute force) -->
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_1_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_1_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_1_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_1_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_1_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_2_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_2_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_2_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_2_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_2_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_3_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_3_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_adapter_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_1_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_1_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_1_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_1_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_2_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_2_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_2_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_2_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_2_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_3_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_3_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_1_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_1_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_1_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_1_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_2_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_2_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_2_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_2_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_2_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_3_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_3_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_2_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_finger_1_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_finger_1_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_finger_2_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_finger_2_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_finger_2_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_finger_2_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_finger_2_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_finger_3_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_finger_3_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_flexor_3_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_finger_1_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_finger_2_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_finger_2_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_finger_2_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_finger_2_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_finger_2_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_finger_3_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_finger_3_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_rotatory_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_finger_2_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_finger_2_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_finger_2_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_finger_2_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_finger_2_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_finger_3_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_finger_3_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_1_tip_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_finger_2_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_finger_2_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_finger_2_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_finger_2_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_finger_3_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_finger_3_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_1_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_finger_2_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_finger_2_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_finger_2_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_finger_3_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_finger_3_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_2_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_finger_2_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_finger_2_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_finger_3_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_finger_3_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_flexor_3_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="allegro_finger_2_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="allegro_finger_3_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="allegro_finger_3_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_rotatory_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="allegro_finger_3_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="allegro_finger_3_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_2_tip_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="allegro_finger_3_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_1_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="allegro_finger_3_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_2_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="allegro_finger_3_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_flexor_3_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="allegro_finger_3_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_rotatory_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="allegro_palm_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_finger_3_tip_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="allegro_thumb_flexor_1_link" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_palm_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_1_link" link2="allegro_thumb_flexor_2_link" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_1_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_1_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_1_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_1_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_1_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_1_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_1_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_1_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_1_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_1_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_1_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_2_link" link2="allegro_thumb_flexor_3_link" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_2_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_2_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_2_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_2_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_2_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_2_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_2_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_2_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_2_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_2_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_3_link" link2="allegro_thumb_rotatory_link" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_3_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_3_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_3_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_3_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_3_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_3_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_3_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_3_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_flexor_3_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_rotatory_link" link2="allegro_thumb_tip_link" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_rotatory_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_rotatory_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_rotatory_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_rotatory_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_rotatory_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_rotatory_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_rotatory_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_rotatory_link" link2="panda_link7" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_tip_link" link2="panda_link0" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_tip_link" link2="panda_link1" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_tip_link" link2="panda_link2" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_tip_link" link2="panda_link3" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_tip_link" link2="panda_link4" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_tip_link" link2="panda_link5" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_tip_link" link2="panda_link6" reason="Default"/>
+    <disable_collisions link1="allegro_thumb_tip_link" link2="panda_link7" reason="Default"/>
+</robot>

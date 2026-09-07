@@ -1,0 +1,67 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100 # Hz
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+    gripper_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+arm_controller:
+  ros__parameters:
+    joints:
+      - panda_joint1
+      - panda_joint2
+      - panda_joint3
+      - panda_joint4
+      - panda_joint5
+      - panda_joint6
+      - panda_joint7
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+    constraints:
+      goal_time: 10.0
+      stopped_velocity_tolerance: 0.5
+
+gripper_controller:
+  ros__parameters:
+    joints:
+      - allegro_thumb_rotatory_joint
+      - allegro_thumb_flexor_1_joint
+      - allegro_thumb_flexor_2_joint
+      - allegro_thumb_flexor_3_joint
+      - allegro_finger_1_rotatory_joint
+      - allegro_finger_1_flexor_1_joint
+      - allegro_finger_1_flexor_2_joint
+      - allegro_finger_1_flexor_3_joint
+      - allegro_finger_2_rotatory_joint
+      - allegro_finger_2_flexor_1_joint
+      - allegro_finger_2_flexor_2_joint
+      - allegro_finger_2_flexor_3_joint
+      - allegro_finger_3_rotatory_joint
+      - allegro_finger_3_flexor_1_joint
+      - allegro_finger_3_flexor_2_joint
+      - allegro_finger_3_flexor_3_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+    constraints:
+      goal_time: 10.0
+      stopped_velocity_tolerance: 0.5

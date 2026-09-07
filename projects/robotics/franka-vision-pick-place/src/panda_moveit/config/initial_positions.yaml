@@ -1,0 +1,27 @@
+# Default initial positions for panda + allegro hand
+# panda_joint4 must be within soft limits [-3.0718, -0.0698]
+
+initial_positions:
+  panda_joint1: 0
+  panda_joint2: 0
+  panda_joint3: 0
+  panda_joint4: -1.5708
+  panda_joint5: 0
+  panda_joint6: 1.5708
+  panda_joint7: 0
+  allegro_thumb_rotatory_joint: 0.463
+  allegro_thumb_flexor_1_joint: 0
+  allegro_thumb_flexor_2_joint: 0
+  allegro_thumb_flexor_3_joint: 0
+  allegro_finger_1_rotatory_joint: 0
+  allegro_finger_1_flexor_1_joint: 0
+  allegro_finger_1_flexor_2_joint: 0
+  allegro_finger_1_flexor_3_joint: 0
+  allegro_finger_2_rotatory_joint: 0
+  allegro_finger_2_flexor_1_joint: 0
+  allegro_finger_2_flexor_2_joint: 0
+  allegro_finger_2_flexor_3_joint: 0
+  allegro_finger_3_rotatory_joint: 0
+  allegro_finger_3_flexor_1_joint: 0
+  allegro_finger_3_flexor_2_joint: 0
+  allegro_finger_3_flexor_3_joint: 0

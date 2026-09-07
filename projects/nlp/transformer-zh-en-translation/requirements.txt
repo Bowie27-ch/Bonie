@@ -1,0 +1,8 @@
+tensorflow
+numpy
+matplotlib
+scikit-learn
+jieba
+zhconv
+jupyterlab
+

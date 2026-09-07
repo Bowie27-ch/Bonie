@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
+
+  <xacro:property name="PI" value="3.14159265359" />
+
+  <ros2_control name="RobotSystem" type="system">
+    
+    <!-- ros2_control Gazebo -->
+    <!-- ROS 2 Humble -->
+    <xacro:if value="$(arg is_ignition)">
+      <hardware>
+        <plugin>ign_ros2_control/IgnitionSystem</plugin>
+      </hardware>
+    </xacro:if>
+    
+    <!-- ROS 2 Iron or above -->
+    <xacro:unless value="$(arg is_ignition)">
+      <hardware>
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+      </hardware>
+    </xacro:unless>
+
+    <!-- Arm joints: initial_value must be within safety_controller soft limits -->
+    <!-- panda_joint4 soft limits: [-3.0718, -0.0698] — CANNOT start at 0! -->
+    <!-- panda_joint6 soft limits: [-0.0175, 3.7525] — barely OK at 0 but safer at 1.57 -->
+    <joint name="panda_joint1">
+      <command_interface name="position">
+        <param name="min">-2.9671</param>
+        <param name="max">2.9671</param>
+      </command_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+    <joint name="panda_joint2">
+      <command_interface name="position">
+        <param name="min">-1.8326</param>
+        <param name="max">1.8326</param>
+      </command_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+    <joint name="panda_joint3">
+      <command_interface name="position">
+        <param name="min">-2.9671</param>
+        <param name="max">2.9671</param>
+      </command_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+    <joint name="panda_joint4">
+      <command_interface name="position">
+        <param name="min">-3.1416</param>
+        <param name="max">0.0</param>
+      </command_interface>
+      <state_interface name="position"><param name="initial_value">-1.5708</param></state_interface>
+    </joint>
+    <joint name="panda_joint5">
+      <command_interface name="position">
+        <param name="min">-2.9671</param>
+        <param name="max">2.9671</param>
+      </command_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+    <joint name="panda_joint6">
+      <command_interface name="position">
+        <param name="min">-0.0873</param>
+        <param name="max">3.8223</param>
+      </command_interface>
+      <state_interface name="position"><param name="initial_value">1.5708</param></state_interface>
+    </joint>
+    <joint name="panda_joint7">
+      <command_interface name="position">
+        <param name="min">-2.9671</param>
+        <param name="max">2.9671</param>
+      </command_interface>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+    </joint>
+
+    <!-- Allegro Hand: Thumb (4 joints) -->
+    <joint name="allegro_thumb_rotatory_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <joint name="allegro_thumb_flexor_1_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <joint name="allegro_thumb_flexor_2_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <joint name="allegro_thumb_flexor_3_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <!-- Allegro Hand: Finger 1 (4 joints) -->
+    <joint name="allegro_finger_1_rotatory_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <joint name="allegro_finger_1_flexor_1_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <joint name="allegro_finger_1_flexor_2_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <joint name="allegro_finger_1_flexor_3_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <!-- Allegro Hand: Finger 2 (4 joints) -->
+    <joint name="allegro_finger_2_rotatory_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <joint name="allegro_finger_2_flexor_1_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <joint name="allegro_finger_2_flexor_2_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <joint name="allegro_finger_2_flexor_3_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <!-- Allegro Hand: Finger 3 (4 joints) -->
+    <joint name="allegro_finger_3_rotatory_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <joint name="allegro_finger_3_flexor_1_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <joint name="allegro_finger_3_flexor_2_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+    <joint name="allegro_finger_3_flexor_3_joint">
+      <command_interface name="position"/><state_interface name="position"/><state_interface name="velocity"/>
+    </joint>
+
+  </ros2_control>
+
+</robot>

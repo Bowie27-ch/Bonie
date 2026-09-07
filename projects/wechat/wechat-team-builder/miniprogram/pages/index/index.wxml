@@ -1,0 +1,9 @@
+<!--pages/index/index.wxml-->
+<view>
+  <view class="choose">
+      <navigator class="join" url="/pages/form/index">创建小组</navigator>
+      <navigator class="join" url="/pages/list/index">小组列表</navigator>
+      <navigator class="join" url="/pages/input/index">登录</navigator>
+    </view>
+</view>
+

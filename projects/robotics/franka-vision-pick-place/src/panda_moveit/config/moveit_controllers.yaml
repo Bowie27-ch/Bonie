@@ -1,0 +1,42 @@
+# MoveIt uses this configuration for controller management
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+moveit_simple_controller_manager:
+  controller_names:
+    - arm_controller
+    - gripper_controller
+
+  arm_controller:
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - panda_joint1
+      - panda_joint2
+      - panda_joint3
+      - panda_joint4
+      - panda_joint5
+      - panda_joint6
+      - panda_joint7
+
+  gripper_controller:
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - allegro_thumb_rotatory_joint
+      - allegro_thumb_flexor_1_joint
+      - allegro_thumb_flexor_2_joint
+      - allegro_thumb_flexor_3_joint
+      - allegro_finger_1_rotatory_joint
+      - allegro_finger_1_flexor_1_joint
+      - allegro_finger_1_flexor_2_joint
+      - allegro_finger_1_flexor_3_joint
+      - allegro_finger_2_rotatory_joint
+      - allegro_finger_2_flexor_1_joint
+      - allegro_finger_2_flexor_2_joint
+      - allegro_finger_2_flexor_3_joint
+      - allegro_finger_3_rotatory_joint
+      - allegro_finger_3_flexor_1_joint
+      - allegro_finger_3_flexor_2_joint
+      - allegro_finger_3_flexor_3_joint

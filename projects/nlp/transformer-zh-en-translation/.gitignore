@@ -1,0 +1,12 @@
+.ipynb_checkpoints/
+checkpoints/
+artifacts/
+data/
+*.data-00000-of-00001
+*.index
+*.pth
+*.pt
+*.keras
+*.h5
+__pycache__/
+.DS_Store

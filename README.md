@@ -1,4 +1,4 @@
-# Guobin (Bonito) Shi
+# Guobin (Evan) Shi
 
 M.S. Software Engineering student at Carnegie Mellon University Silicon Valley with a background in machine learning, computer vision, and robotics. I build AI-enabled systems that connect models with reliable software and real-world workflows.
 

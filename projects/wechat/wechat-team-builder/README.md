@@ -2,6 +2,14 @@
 
 A WeChat Mini Program for creating and joining student teams. It combines a native Mini Program front end with Tencent CloudBase functions and a document database.
 
+This repository contains the team-formation module from a broader Student Union Activity Platform developed for the course.
+
+## Interface Preview
+
+The composite below shows the broader platform's activity discovery, activity details and registration, and announcement interfaces. The source in this directory focuses on the team-formation module.
+
+![Student Union Activity Platform showing activity discovery, registration details, and announcements](student-union-activity-platform-preview.png)
+
 ## Features
 
 - Create a group with a team name, leader nickname, and student number
